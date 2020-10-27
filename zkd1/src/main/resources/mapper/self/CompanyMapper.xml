@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gopher.zkd1.dao.CompanyMapper">
+
+    <resultMap id="BaseResultMap" type="com.gopher.zkd1.entity.CompanyDo">
+        <id column="id" property="id"/>
+        <result column="company_name" property="companyName"/>
+        <result column="company_tel" property="companyTel"/>
+        <result column="company_mail" property="companyMail"/>
+        <result column="contacts_type" property="companyLinkType"/>
+        <result column="company_hc" property="companyHc"/>
+        <result column="gmt_create" property="gmtCreateDate"/>
+        <result column="gmt_modify" property="gmtModifyDate"/>
+    </resultMap>
+    <select id="listCompany" parameterType="com.gopher.api.service.dubbo.company.dto.QueryCompanyAo" resultMap="BaseResultMap">
+        SELECT id,company_name,company_mail,company_hc,company_tel ,gmt_create,contacts_type
+              FROM didi_company t1
+        <where>
+            1=1
+            <if test="param.companyName!=null and param.companyName !=''">
+                AND t1.company_name like CONCAT(#{param.companyName},'%')
+            </if>
+            <if test="param.companyTel!=null and param.companyTel !=''">
+                AND t1.company_tel like CONCAT(#{param.companyName},'%')
+            </if>
+            <if test="param.accessStartTime!=null ">
+                AND t1.gmt_create &gt;= #{param.accessStartTime}
+            </if>
+            <if test="param.accessEndTime!=null">
+                AND t1.gmt_modify &lt;= #{param.accessEndTime}
+            </if>
+        </where>
+        order by t1.gmt_create
+    </select>
+</mapper>

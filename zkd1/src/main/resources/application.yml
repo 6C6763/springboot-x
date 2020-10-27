@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: zkd1
+  main:
+    banner-mode: off
+    allow-bean-definition-overriding: true
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://152.136.207.239:3306/gopher?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    username: root
+    password: gopher@lee@2020.com
+server:
+  port: 9500
+  servlet:
+    context-path: /zkd1
+
+dubbo:
+  application:
+    name: zkd1
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    check: false
+    address: zookeeper://2c4g:2181
+    protocol: zookeeper
+  consumer:
+    check: false
+    timeout: 30000
+  scan:
+    base-packages: com.gopher.zkd1.service.dubbo
+
+mybatis:
+  mapper-locations: classpath:mapper/*/*Mapper.xml
+  type-aliases-package: com.gopher.zkd1.entity
+  configuration:
+    map-underscore-to-camel-case: true
