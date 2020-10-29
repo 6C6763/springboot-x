@@ -16,6 +16,8 @@
         <module>zkd2</module>
         <module>tk</module>
         <module>es-job</module>
+        <module>mp</module>
+        <module>web-flux</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
