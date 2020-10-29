@@ -1,9 +1,9 @@
 package com.gopher.mp.web;
 
 import com.gopher.mp.dao.CompanyMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.gopher.mp.entity.dto.QueryCompanyAo;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,7 +20,12 @@ public class MpStart {
     CompanyMapper companyMapper;
 
     @GetMapping("list")
-    public List list(){
+    public List list() {
+        return companyMapper.findAllCompany();
+    }
+
+    @PostMapping("query")
+    public List postList(@Validated @RequestBody  QueryCompanyAo queryCompanyAo) {
         return companyMapper.findAllCompany();
     }
 }
