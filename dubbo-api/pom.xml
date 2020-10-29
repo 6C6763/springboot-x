@@ -18,14 +18,15 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-boot-starter</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.6c6763</groupId>
             <artifactId>common</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>

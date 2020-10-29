@@ -2,6 +2,7 @@ package com.gopher.zkd1.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -19,7 +20,7 @@ public class SwaggerConfiguration {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.OAS_30)
+        return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.gopher.zkd1.web"))
                 //.paths(PathSelectors.ant("/**/test/post"))
@@ -28,12 +29,12 @@ public class SwaggerConfiguration {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfo(
-                "SanYue-XiAOJuKeJi 系统文档",
-                "三悦科技对接滴滴企业打车系统文档",
-                "API V1.0",
-                "",
-                new Contact("gopher_lee", "http://www.baidu.com", "guangchangde@gmail.com"),
-                "Apache", "http://www.apache.org/", Collections.emptyList());
+        return
+                new ApiInfoBuilder()
+                        .title("SpringBoot 整合 tk-mybatis 在线Api文档")
+                        .description("描述文档的信息")
+                        .termsOfServiceUrl("https://baidu.com")
+                        .version("V1.0")
+                        .build();
     }
 }

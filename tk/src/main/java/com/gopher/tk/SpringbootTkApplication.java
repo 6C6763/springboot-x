@@ -1,24 +1,22 @@
-package com.gopher.zkd1;
+package com.gopher.tk;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * @author 6c6763
  */
 @SpringBootApplication
-@EnableSwagger2
-@MapperScan(basePackages = {"com.gopher.zkd1.dao"})
+@MapperScan(basePackages = {"com.gopher.tk.dao"})
 @ComponentScan(excludeFilters = {@ComponentScan.Filter(
-        type = FilterType.REGEX, pattern = "com\\.gopher\\.zkd1\\.tk\\.CoreMapper")})
-public class Zkd1Application {
+        type = FilterType.REGEX, pattern = "com\\.gopher\\.tk\\.exclude\\.CoreMapper")})
+public class SpringbootTkApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Zkd1Application.class, args);
+        SpringApplication.run(SpringbootTkApplication.class, args);
     }
 
 }
