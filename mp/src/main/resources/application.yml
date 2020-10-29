@@ -1,15 +1,19 @@
+server:
+  port: 9700
+  servlet:
+    context-path: /mp
 spring:
   application:
-    name: tk
+    name: mp-action
   main:
     banner-mode: off
     allow-bean-definition-overriding: true
-  mvc:
-    date-format: yyyy-MM-dd HH:mm:ss
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://2c4g:3306/gopher?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
     password: gopher@lee@2020.com
-server:
-  port: 7999
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+
