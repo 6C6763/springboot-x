@@ -16,4 +16,9 @@ spring:
   mvc:
     format:
       date: yyyy-MM-dd HH:mm:ss
-
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
