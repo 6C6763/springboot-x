@@ -1,0 +1,31 @@
+server:
+  port: 9900
+  servlet:
+    context-path: /mq
+
+spring:
+  application:
+    name: rabbit
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: NON_NULL
+    time-zone: GMT+8
+  rabbitmq:
+    host: localhost
+    connection-timeout: 3000
+    listener:
+      order:
+        exchange:
+          durable: true
+          key: order.*
+          name: order-exchange
+          type: topic
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 100
+        prefetch: 8
+    password: guest
+    username: guest
+    virtual-host: /
+    port: 5672
